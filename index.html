@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BTS WORLD TOUR 'ARIRANG' — a fan-made tour hub with official links, cities, updates, and ARMY information.">
+  <meta name="theme-color" content="#0b0715">
+  <title>BTS WORLD TOUR 'ARIRANG' | ARMY Tour Hub</title>
+  <style>
+    :root {
+      --bg: #080611;
+      --bg2: #110b20;
+      --card: rgba(255,255,255,.07);
+      --line: rgba(255,255,255,.13);
+      --text: #fff;
+      --muted: #bdb6cb;
+      --pink: #ff4fd8;
+      --purple: #9b6cff;
+      --cyan: #63e6ff;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(155,108,255,.25), transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(255,79,216,.18), transparent 28%),
+        linear-gradient(145deg, var(--bg), var(--bg2) 55%, #090611);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(92%, var(--max)); margin: auto; }
+    nav {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(8,6,17,.78);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      min-height: 64px; display: flex; align-items: center;
+      justify-content: space-between; gap: 20px;
+    }
+    .brand { font-weight: 900; letter-spacing: .08em; }
+    .brand span { color: var(--pink); }
+    .nav-links { display: flex; gap: 20px; font-size: .9rem; color: var(--muted); }
+    .nav-links a:hover { color: white; }
+    .hero {
+      min-height: 86vh; display: grid; place-items: center; text-align: center;
+      position: relative; padding: 90px 0 70px;
+    }
+    .orb {
+      position: absolute; border-radius: 50%; filter: blur(8px); opacity: .45;
+      pointer-events: none;
+    }
+    .orb.one { width: 230px; height: 230px; background: var(--purple); left: -80px; top: 18%; }
+    .orb.two { width: 190px; height: 190px; background: var(--pink); right: -60px; top: 38%; }
+    .hero-content { position: relative; max-width: 850px; }
+    .eyebrow {
+      display: inline-block; padding: 8px 14px; border: 1px solid var(--line);
+      border-radius: 999px; color: var(--cyan); background: rgba(99,230,255,.07);
+      font-size: .78rem; font-weight: 800; letter-spacing: .15em; margin-bottom: 20px;
+    }
+    h1 {
+      font-size: clamp(3rem, 10vw, 7rem); line-height: .9;
+      letter-spacing: -.07em; margin-bottom: 24px;
+    }
+    h1 .accent {
+      background: linear-gradient(90deg, var(--pink), var(--purple), var(--cyan));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero p { max-width: 680px; margin: auto; color: var(--muted); font-size: 1.08rem; }
+    .buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 13px 19px; border-radius: 13px; font-weight: 800;
+      border: 1px solid var(--line); transition: transform .2s, background .2s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn.primary { background: linear-gradient(135deg, var(--pink), var(--purple)); border: 0; }
+    .btn.secondary { background: rgba(255,255,255,.06); }
+    section { padding: 78px 0; }
+    .section-title { font-size: clamp(2rem, 5vw, 3.4rem); letter-spacing: -.04em; margin-bottom: 12px; }
+    .section-lead { color: var(--muted); max-width: 720px; margin-bottom: 32px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card {
+      background: var(--card); border: 1px solid var(--line); border-radius: 22px;
+      padding: 25px; box-shadow: 0 18px 60px rgba(0,0,0,.18);
+    }
+    .card h3 { margin-bottom: 8px; font-size: 1.25rem; }
+    .card p { color: var(--muted); }
+    .icon { font-size: 2rem; margin-bottom: 13px; }
+    .city-list { display: flex; flex-wrap: wrap; gap: 10px; }
+    .city {
+      border: 1px solid var(--line); background: rgba(255,255,255,.045);
+      border-radius: 999px; padding: 9px 13px; color: #eee;
+    }
+    .highlight {
+      margin-top: 20px; border-radius: 24px; padding: 28px;
+      border: 1px solid var(--line);
+      background: linear-gradient(120deg, rgba(155,108,255,.16), rgba(255,79,216,.08));
+    }
+    .highlight strong { color: var(--cyan); }
+    .notice {
+      padding: 16px 18px; border-left: 3px solid var(--pink);
+      background: rgba(255,255,255,.05); color: var(--muted);
+      border-radius: 8px; margin-top: 20px;
+    }
+    .faq details {
+      background: rgba(255,255,255,.05); border: 1px solid var(--line);
+      border-radius: 15px; padding: 17px 19px; margin: 10px 0;
+    }
+    .faq summary { cursor: pointer; font-weight: 800; }
+    .faq p { color: var(--muted); padding-top: 10px; }
+    footer {
+      padding: 45px 0; border-top: 1px solid var(--line);
+      color: var(--muted); text-align: center;
+    }
+    .tiny { font-size: .82rem; margin-top: 12px; }
+    @media (max-width: 800px) {
+      .grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hero { min-height: 78vh; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container nav-inner">
+      <a class="brand" href="#top">BTS <span>ARIRANG</span></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#tour">Tour</a>
+        <a href="#highlights">Highlights</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <header class="hero">
+      <div class="orb one"></div>
+      <div class="orb two"></div>
+      <div class="container hero-content">
+        <div class="eyebrow">FAN-MADE ARMY TOUR HUB</div>
+        <h1>BTS WORLD TOUR<br><span class="accent">'ARIRANG'</span></h1>
+        <p>
+          A fan-made guide to the BTS WORLD TOUR 'ARIRANG' era —
+          with tour regions, announced cities, special highlights, and links
+          to official information.
+        </p>
+        <div class="buttons">
+          <a class="btn primary" href="https://2026bts.com/" target="_blank" rel="noopener">Official Tour ↗</a>
+          <a class="btn secondary" href="https://btsworldtourofficial.com/" target="_blank" rel="noopener">Official Tickets ↗</a>
+          <a class="btn secondary" href="#tour">Explore Tour ↓</a>
+        </div>
+      </div>
+    </header>
+
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">What is ARIRANG?</h2>
+        <p class="section-lead">
+          'ARIRANG' is the title of BTS's 2026 world-tour era. This page is
+          designed as an easy-to-use fan hub; always check official BTS/Weverse
+          announcements before making travel or ticket decisions.
+        </p>
+        <div class="grid">
+          <article class="card">
+            <div class="icon">💜</div>
+            <h3>For ARMY</h3>
+            <p>Quickly find official tour and ticket resources in one place.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🌍</div>
+            <h3>Worldwide</h3>
+            <p>Explore announced cities across North America, Europe, Latin America, Asia and Australia.</p>
+          </article>
+          <article class="card">
+            <div class="icon">✨</div>
+            <h3>Fan-made</h3>
+            <p>This is an independent fan project and is not an official BTS or HYBE website.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tour">
+      <div class="container">
+        <h2 class="section-title">Tour Regions</h2>
+        <p class="section-lead">Cities below are based on official tour/ticket announcements. For exact dates, venues and ticket rules, use the official links.</p>
+
+        <div class="grid">
+          <article class="card">
+            <div class="icon">🇺🇸</div>
+            <h3>North America & Europe</h3>
+            <div class="city-list">
+              <span class="city">Tampa</span><span class="city">Mexico City</span>
+              <span class="city">Stanford</span><span class="city">East Rutherford</span>
+              <span class="city">Chicago</span><span class="city">Las Vegas</span>
+              <span class="city">Baltimore</span><span class="city">Toronto</span>
+              <span class="city">El Paso</span><span class="city">Foxborough</span>
+              <span class="city">Arlington</span><span class="city">Los Angeles</span>
+              <span class="city">Brussels</span><span class="city">London</span>
+              <span class="city">Munich</span><span class="city">Madrid</span>
+              <span class="city">Paris</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="icon">🌎</div>
+            <h3>Latin America</h3>
+            <div class="city-list">
+              <span class="city">Bogotá</span><span class="city">Lima</span>
+              <span class="city">Buenos Aires</span><span class="city">São Paulo</span>
+              <span class="city">Santiago</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="icon">🌏</div>
+            <h3>Asia & Australia</h3>
+            <div class="city-list">
+              <span class="city">Kaohsiung</span><span class="city">Bangkok</span>
+              <span class="city">Kuala Lumpur</span><span class="city">Singapore</span>
+              <span class="city">Jakarta</span><span class="city">Melbourne</span>
+              <span class="city">Sydney</span><span class="city">Hong Kong</span>
+              <span class="city">Bulacan</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="notice">
+          <strong>Ticket safety:</strong> Use official ticketing information and be careful with resale links or social-media sellers. Tour details can change.
+        </div>
+      </div>
+    </section>
+
+    <section id="highlights">
+      <div class="container">
+        <h2 class="section-title">ARIRANG Highlights</h2>
+        <p class="section-lead">Special events and additional-show information featured in official announcements.</p>
+
+        <div class="highlight">
+          <h3>🏙️ BTS THE CITY ARIRANG — London</h3>
+          <p><strong>July 4–10, 2026</strong></p>
+          <p style="margin-top:8px;color:var(--muted)">
+            A BTS THE CITY ARIRANG program connected with the London tour stop.
+          </p>
+          <div class="buttons" style="justify-content:flex-start;margin-top:18px">
+            <a class="btn secondary" href="https://weverse.io/bts/notice/32572" target="_blank" rel="noopener">Weverse Info ↗</a>
+          </div>
+        </div>
+
+        <div class="highlight">
+          <h3>➕ Additional Shows</h3>
+          <p style="margin-top:8px"><strong>Jakarta:</strong> December 29, 2026 — Gelora Bung Karno Main Stadium</p>
+          <p><strong>Bulacan:</strong> March 16, 2027 — Philippine Sports Stadium</p>
+          <div class="buttons" style="justify-content:flex-start;margin-top:18px">
+            <a class="btn secondary" href="https://weverse.io/bts/notice/33154" target="_blank" rel="noopener">Official Announcement ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="official">
+      <div class="container">
+        <h2 class="section-title">Official Links</h2>
+        <p class="section-lead">Use these links as the source of truth for changing tour information.</p>
+        <div class="grid">
+          <a class="card" href="https://2026bts.com/" target="_blank" rel="noopener">
+            <div class="icon">🌐</div>
+            <h3>2026 BTS Official Tour</h3>
+            <p>Open the official tour information site.</p>
+          </a>
+          <a class="card" href="https://btsworldtourofficial.com/" target="_blank" rel="noopener">
+            <div class="icon">🎟️</div>
+            <h3>Official Ticket Information</h3>
+            <p>Check official ticketing information and rules.</p>
+          </a>
+          <a class="card" href="https://weverse.io/bts" target="_blank" rel="noopener">
+            <div class="icon">📢</div>
+            <h3>BTS on Weverse</h3>
+            <p>Follow official BTS notices and announcements.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container faq">
+        <h2 class="section-title">FAQ</h2>
+
+        <details>
+          <summary>Is this the official BTS website?</summary>
+          <p>No. This is a fan-made website. Official BTS/Weverse and official ticketing pages are linked throughout the site.</p>
+        </details>
+
+        <details>
+          <summary>Where should I check before buying a ticket?</summary>
+          <p>Check the official tour and ticket pages first. Confirm the city, date, venue, ticket rules and any membership-presale requirements before paying.</p>
+        </details>
+
+        <details>
+          <summary>Can the tour information change?</summary>
+          <p>Yes. Dates, venues, ticketing rules and additional shows can change. This site is a fan hub, so official announcements should always be treated as the final source.</p>
+        </details>
+
+        <details>
+          <summary>Can I share this website?</summary>
+          <p>Yes. Share your published website link with your ARMY friends and on your social media. Please keep the fan-made notice visible.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="font-size:1.2rem;font-weight:900">BTS <span style="color:var(--pink)">ARIRANG</span></div>
+      <p class="tiny">Fan-made website • Not affiliated with BTS, BIGHIT MUSIC, or HYBE.</p>
+      <p class="tiny">© 2026 ARMY Tour Hub. Tour information should be verified through official sources.</p>
+    </div>
+  </footer>
+
+</body>
+          </html>
